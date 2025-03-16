@@ -1,0 +1,91 @@
+﻿@model clsModels.ViewModels.ArticuloVM
+
+@{
+    ViewData["Slider"] = "Crear articulo";
+}
+
+<br />
+<br />
+<h3 class="text-center">Crear un nuevo articulo</h3>
+@* campo de subida de archivo *@
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row px-2 offset-1 border">
+        @* Validacion del lado del servidor asp-validation-summary="All" *@
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="col-10 offset-1 mt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Articulo.nombre"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Articulo.nombre" class="form-control" placeholder="Ingresa el nombre" />
+                    <span asp-validation-for="Articulo.nombre" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Articulo.descripcion"></label>
+                </div>
+                <div class="col-8">
+                    @* textarea para crear un editor en la descripcion con tinymce, tambien se debe importar tinymce en los scripts *@
+                    <textarea asp-for="Articulo.descripcion" class="form-control" style="height: 300px;"></textarea>
+                    <span asp-validation-for="Articulo.descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="Categoria">Categoria</label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Articulo.CategoriaId, Model.ListaCategorias,
+                    "-Por favor seleccione una categoria-", new { @class="form-control"})
+                    <span asp-validation-for="Articulo.CategoriaId" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Articulo.urlImagen"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="archivos" id="subidaArchivos" class="form-control" />
+                    <span asp-validation-for="Articulo.urlImagen" class="text-danger"></span>
+                </div>
+            </div>
+
+           <br />
+
+            <div class="form-group-row">
+                <div class="col-8">
+                    <partial name="_VistaCrearVolver" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@* importar tinymce y configurar *@
+@* Validacion de lado del cliente *@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.0/tinymce.min.js" integrity="sha512-/4EpSbZW47rO/cUIb0AMRs/xWwE8pyOLf8eiDWQ6sQash5RP1Cl8Zi2aqa4QEufjeqnzTK8CLZWX7J5ZjLcc1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            plugins:'lists',
+            menubar:'file edit format'
+        });
+    </script>
+}

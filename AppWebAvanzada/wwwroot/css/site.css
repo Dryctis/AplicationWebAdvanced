@@ -1,0 +1,107 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/*body {
+  margin-bottom: 60px;
+}
+*/
+.busqueda ::placeholder {
+    color: #101010 !important;
+}
+
+/*Estilos para el navbar */
+.navbar{
+    padding: 10px 0; 
+}
+
+/*Alineacion del icono de busqueda*/
+.busqueda input-group-append {
+    display: flex;
+    align-items: center;
+
+}
+
+/*Estilo para el boton de busqueda*/
+.busqueda .btn-secondary {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/*Botones registro y acceder de la pagina maestra(_layout)*/
+.btn-registro {
+    background-color: #ff6600 !important; /* Naranja */
+    color: white !important;
+    border-radius: 8px; /* Bordes redondeados opcionales */
+    padding: 8px 16px;
+}
+
+.btn-acceder {
+    background-color: #008000 !important; /* Verde */
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.btn-registro:hover {
+    background-color: #cc5500 !important; /* Un tono más oscuro */
+}
+
+.btn-acceder:hover {
+    background-color: #006400 !important; /* Un tono más oscuro */
+}
+
+/* Paleta de colores más profesional */
+:root {
+    --primary-color: #2C3E50; /* Azul oscuro elegante */
+    --secondary-color: #34495E; /* Azul grisáceo */
+    --accent-color: #1ABC9C; /* Verde turquesa para detalles */
+    --text-color: #ECF0F1; /* Gris claro para contraste */
+    --bg-color: #F5F5F5; /* Fondo general claro */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+}
+
+    .navbar .nav-link {
+        color: var(--text-color) !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+.btn-success {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+    .btn-success:hover {
+        background-color: darken(var(--accent-color), 10%) !important;
+    }
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}

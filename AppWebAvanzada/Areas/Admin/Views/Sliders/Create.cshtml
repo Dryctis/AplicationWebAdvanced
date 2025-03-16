@@ -1,0 +1,74 @@
+﻿@model clsModels.Slider
+
+@{
+    ViewData["Slider"] = "Crear slider";
+}
+
+<br />
+<br />
+<h3 class="text-center">Crear un nuevo slider</h3>
+@* campo de subida de archivo *@
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row px-2 offset-1 border">
+        @* Validacion del lado del servidor asp-validation-summary="All" *@
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="col-10 offset-1 mt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="nombre"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="nombre" class="form-control" placeholder="Ingresa el nombre" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="estado"></label>
+                </div>
+                <div class="col-8">
+                    @* textarea para crear un editor en la descripcion con tinymce, tambien se debe importar tinymce en los scripts *@
+                    <input type="checkbox" asp-for="estado"/>
+                    <span asp-validation-for="estado" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="urlImagen"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="archivos" id="subidaArchivos" class="form-control" />
+                    <span asp-validation-for="urlImagen" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group-row">
+                <div class="col-8">
+                    <partial name="_VistaCrearVolver" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@* importar tinymce y configurar *@
+@* Validacion de lado del cliente *@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+   
+   
+}
